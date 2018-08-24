@@ -35,6 +35,12 @@ sudo systemctl enable nafuda-bootup
 set +e
 sudo mv /etc/motd /etc/motd.default
 sudo cp /home/pi/bcon_nafuda/resource/motd /etc/motd
+
+sudo cp /home/pi/bcon_nafuda/resource/show_txt /usr/bin/
+sudo cp /home/pi/bcon_nafuda/resource/show_img /usr/bin/
+sudo cp /home/pi/bcon_nafuda/resource/mount_vsd_ro /usr/bin/
+sudo cp /home/pi/bcon_nafuda/resource/mount_vsd_rw /usr/bin/
+
 set -e
 
 echo "DONE"
