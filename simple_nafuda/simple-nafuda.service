@@ -1,0 +1,21 @@
+[Unit]
+Description=simple nafuda
+
+[Service]
+WorkingDirectory=/home/pi/bcon_nafuda/simple_nafuda/
+ExecStart=/usr/bin/python3.5 main.py
+ExecStopPost=/home/pi/bcon_nafuda/simple_nafuda/exec_stop_post.sh
+Restart=no
+Type=simple
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+
+## how to install
+# sudo cp simple-nafuda.service /etc/systemd/system/
+# sudo systemctl daemon-reload
+# sudo systemctl status simple-nafuda
+# (check output
+# sudo systemctl start simple-nafuda
+#

@@ -1,0 +1,66 @@
+# 追加情報
+
+以下はすべて無保証です。
+
+
+## NAFUDAドライブの構造について
+
+電子名札は`g_mass_storage`を用いることで、`/home/pi/virtual_sd.img`のloop deviceをMass Storage deviceとしてUSBポートへ公開しています。
+
+そのloop deviceは、別途 `/mnt/virtual_sd`にread onlyでマウントされており、起動時に`/home/pi/bcon_nafuda/simple_nafuda`プログラムから読み込まれています。
+
+> ※ ラズパイとPC（母艦）両方から同時にマウントされるため、結構危険なやり方です。最低限の対処としてroでマウントしています。ラズパイからrwでもマウントできますが自己責任でお願いいたします。
+
+> ※ PCからファイルを書き込んでも、Linuxから見えるファイルには即時反映はされるとはかぎりません。再起動やumount/mountをして読み込み直す必要があります。
+
+
+## ディレクトリ構成
+
+Raspberry pi側からから見たディレクトリ構成は以下の通りです。
+
+- `/home/pi/bcon_nafuda` 各種コード、詳しくはそれぞれの内容をご確認ください
+- `/home/pi/virtual_sd.img` NAFUDAドライブの実態（`/mnt/virtual_sd`にループバックでマウントされます）
+- `/mnt/virtual_sd` NAFUDAドライブのイメージをマウントしたもの
+- `/mnt/virtual_sd/img` 名札に表示する画像ファイルが保存された、NAFUDAドライブのimgディレクトリ
+
+
+## NAFUDAドライブをLinuxから読み書きするためには
+
+NAFUDAドライブは `/home/pi/virtual_sd.img` が実体で、readonlyでマウントされています。マウントは`bootup/bootup.sh`で行われています。
+
+rw(書き込み可)でマウントするには、`sudo ~/bcon_nafuda/bootup/mount_vsd_rw.sh`を実行してください。
+
+ro(書き込み不可)でマウントするには、`sudo ~/bcon_nafuda/bootup/mount_vsd_ro.sh`を実行してください。
+
+> ※ PCでNAFUDAドライブをマウントしつつ読み書きするとFSが壊れたりします。rwに変更する場合は自己責任でお願いいたします。
+
+## E-paper仕様、オフィシャルライブラリ
+
+オリジナルのライブラリは以下からダウンロードできます。
+
+https://www.waveshare.com/wiki/4.2inch_e-Paper_Module
+
+> python以外に、C言語向けのサンプルコード・ライブラリがあります。
+
+> オリジナルのpythonライブラリは、python2用です。
+
+## disk sizeについて
+
+初期状態ではSDカードの容量を「一杯まで」つかっていません。
+
+```
+pi@raspberrypi:~ $ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       1.7G  1.1G  471M  70% /
+```
+
+> ※ 大きい容量だと、microSDを焼くのがすごい時間がかかるからです！
+
+`/boot/cmdline.txt`の最後に以下を追記し、再起動することでmicroSDのフルサイズである8GBまでパーティーションを拡大できます。
+
+ただし、自己責任でお願いいたします。
+
+```
+ init=/usr/lib/raspi-config/init_resize.sh
+```
+

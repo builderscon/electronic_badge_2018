@@ -1,0 +1,32 @@
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+
+==
+    ___      ____      _  _      ___      _  _     __
+   F __".   F ___J    F L L]    F __".   FJ  L]    FJ
+  J |--\ L J |___:   J   \| L  J (___|  J |__| L  J  L
+  | |  J | | _____|  | |\   |  J\___ \  |  __  |  |  |
+  F L__J | F L____:  F L\\  J .--___) \ F L__J J  F  J
+ J______/FJ________LJ__L \\__LJ\______JJ__L  J__LJ____L
+ |______F |________||__L  J__| J______F|__L  J__||____|
+    _  _        _        ____    _  _      ___        _
+   F L L]      /.\      F ___J  FJ  L]    F __".     /.\
+  J   \| L    //_\\    J |___: J |  | L  J |--\ L   //_\\
+  | |\   |   / ___ \   | _____|| |  | |  | |  J |  / ___ \
+  F L\\  J  / L___J \  F |____JF L__J J  F L__J | / L___J \
+ J__L \\__LJ__L   J__LJ__F    J\______/FJ______/FJ__L   J__L
+ |__L  J__||__L   J__||__|     J______F |______F |__L   J__|
+
+at first, please update software and documents.
+$ git -C ~/bcon_nafuda/ pull
+
+Docs: ~/bcon_nafuda/docs
+(On web : https://github.com/uzulla/bcon_nafuda )
+
+If you want to stop the nafuda slideshow.
+$ sudo systemctl stop simple-nafuda
