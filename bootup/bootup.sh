@@ -132,4 +132,7 @@ then
   else
     systemctl start simple-nafuda
   fi
+
+  # 消費電力を抑えるため
+  /opt/vc/bin/tvservice --off
 fi
