@@ -33,16 +33,19 @@ systemdに登録された`nafuda-bootup.service`(`bcon_nafuda/bootup/bootup.sh`)
 
 ```
 # nictの現在時刻取得jsonをたたいて表示してみるとか
-curl http://ntp-a1.nict.go.jp/cgi-bin/json | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+curl http://ntp-a1.nict.go.jp/cgi-bin/json | show_txt -
 
 # 画像をDLして表示するとか
 # ※ /mnt/virtual_sdは初期ではread onlyでマウントしているため、
 # 　 書き込みが必要であれば/tmpを指定してください。
 # 　 もしご自身でmount_vsd_rwを用いて再マウントすればその限りではありません。
 curl 'https://builderscon.io/static/images/mrbeacon-001.png' > /tmp/bcon.png
-/home/pi/bcon_nafuda/show_img/show_img.py /tmp/bcon.png
+show_img /tmp/bcon.png
 ```
 
+> ※ `show_img`の実体は `/home/pi/bcon_nafuda/show_img/show_img.py`
+
+> ※ `show_txt`の実体は `/home/pi/bcon_nafuda/show_txt/show_txt.py`
 
 # おまけ
 
@@ -60,7 +63,7 @@ curl 'https://builderscon.io/static/images/mrbeacon-001.png' > /tmp/bcon.png
 
 ```bash
 #!/bin/bash
-ls -al ~/ 2>&1 | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+ls -al ~/ 2>&1 | show_txt -
 # 2>&1 をいれないと、エラー出力がすてられます
 ```
 
@@ -73,8 +76,8 @@ ls -al ~/ 2>&1 | /home/pi/bcon_nafuda/show_txt/show_txt.py -
 
 ```bash
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-git -C /home/pi clone git@github.com:uzulla/bcon_nafuda.git 2>&1 | /home/pi/bcon_nafuda/show_txt/show_txt.py -
-git -C /home/pi pull 2>&1 | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+git -C /home/pi clone git@github.com:uzulla/bcon_nafuda.git 2>&1 | show_txt -
+git -C /home/pi pull 2>&1 | show_txt -
 ```
 
 > ※ コンフリクトしていたときに解消が難しいので、おすすめはできませんが…
@@ -85,13 +88,13 @@ php が必要？以下のstartup.shを作成して再起動すればインスト
 
 ```bash
 #!/bin/bash
-echo "php installing now..." | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+echo "php installing now..." | show_txt -
 # とても時間かかります！
-sudo apt -y install php 2>&1 | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+sudo apt -y install php 2>&1 | show_txt -
 LOG=`which php`
 LOG="${LOG} `php -v`"
 echo "${LOG}"
-echo "finished. ${LOG}" | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+echo "finished. ${LOG}" | show_txt -
 ```
 
 
@@ -100,7 +103,7 @@ echo "finished. ${LOG}" | /home/pi/bcon_nafuda/show_txt/show_txt.py -
 ```php
 <?php
 
-`echo "HELLO PHP!" | /home/pi/bcon_nafuda/show_txt/show_txt.py -`;
+`echo "HELLO PHP!" | show_txt -`;
 ```
 
 startup.shに`php -S`指定をいれればウェブサーバもたてられるよ！
