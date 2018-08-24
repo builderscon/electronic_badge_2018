@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /home/pi/bcon_nafuda/show_txt/show_txt.py $@

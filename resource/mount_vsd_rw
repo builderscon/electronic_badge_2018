@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo /home/pi/bcon_nafuda/bootup/mount_vsd_rw.sh
