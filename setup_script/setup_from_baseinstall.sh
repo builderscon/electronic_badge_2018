@@ -43,6 +43,12 @@ sudo cp /home/pi/bcon_nafuda/resource/mount_vsd_rw /usr/bin/
 
 set -e
 
+# boot speedup tweaks
+sudo systemctl disable hciuart.service
+sudo sed -i -e 's/root\=PARTUUID\=4d3ee428\-02/root\=\/dev\/mmcblk0p2/' /boot/cmdline.txt
+sudo sed -i -e 's/rootwait/rootwait quiet/' /boot/cmdline.txt
+
+
 echo "DONE"
 echo "don't forget wipe wpa_supplicant.conf and .ssh/authorized_keys!!"
 
