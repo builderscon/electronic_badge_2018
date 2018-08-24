@@ -161,22 +161,22 @@ class Nafuda:
         return x, y
 
     # XXX NEED NICE width CALC!!!
-    def get_font_wh_px(self, font, text, canvas_w, canvas_h):
-        pt = 0
-        max_pt = 256
-
-        while True:
-            # too bulldoze method. but e-paper is more than slow.
-            pt = pt + 1
-            if max_pt < pt:
-                break
-
-            font = ImageFont.truetype(font_path, pt)
-            font_w, font_h = font.getsize(text)
-
-            if font_w > canvas_w:
-                break
-            if font_h > canvas_h:
-                break
-
-        return pt - 1
+    # def get_font_wh_px(self, font_path, text, canvas_w, canvas_h):
+    #     pt = 0
+    #     max_pt = 256
+    #
+    #     while True:
+    #         # too bulldoze method. but e-paper is more than slow.
+    #         pt = pt + 1
+    #         if max_pt < pt:
+    #             break
+    #
+    #         font = ImageFont.truetype(font_path, pt)
+    #         font_w, font_h = font.getsize(text)
+    #
+    #         if font_w > canvas_w:
+    #             break
+    #         if font_h > canvas_h:
+    #             break
+    #
+    #     return pt - 1
