@@ -38,9 +38,10 @@ curl http://ntp-a1.nict.go.jp/cgi-bin/json | show_txt -
 # 画像をDLして表示するとか
 # ※ /mnt/virtual_sdは初期ではread onlyでマウントしているため、
 # 　 書き込みが必要であれば/tmpを指定してください。
-# 　 もしご自身でmount_vsd_rwを用いて再マウントすればその限りではありません。
 curl 'https://builderscon.io/static/images/mrbeacon-001.png' > /tmp/bcon.png
 show_img /tmp/bcon.png
+# 　 （もしご自身でmount_vsd_rwを用いて再マウントすればその限りではありませんが、
+# 　　　busyだと失敗するので、やはりログインできるようになってからが良いでしょう）
 ```
 
 > ※ `show_img`の実体は `/home/pi/bcon_nafuda/show_img/show_img.py`
@@ -59,7 +60,7 @@ show_img /tmp/bcon.png
 
 ## 「とにかくなにか実行して結果が知りたい」
 
-`show_txt`をつかえば、表示することが可能です。
+`show_txt`をつかえば、epaperに表示することが可能です。
 
 ```bash
 #!/bin/bash
