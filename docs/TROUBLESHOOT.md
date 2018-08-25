@@ -23,13 +23,13 @@
 
 ## NAFUDAドライブを初期化する
 
-NAFUDAドライブに`vsd_rebuild`というファイルを作成して再起動してください。
+NAFUDAドライブに`vsd_rebuild`というファイルを作成して、名札を再起動してください。
 
 > ※ 詳細は`/bootup/README.md`の`vsd_rebuild`項目を参照してください。
 
 > ※ これはNAFUDAシステムの完全初期化ではありません。NAFUDAドライブの外にあるファイルや、ID/PASSが初期化されるわけではありません。
 
-NAFUDAドライブをPCで初期化すると、正しく動作しなくなる可能性があります。
+NAFUDAドライブをPCで初期化（フォーマット）すると、正しく動作しなくなる可能性があります。
 
 
 ## パスワード、ホスト名、NAFUDAドライブを初期化する
@@ -48,18 +48,18 @@ bash /home/pi/bcon_nafuda/setup_script/reset_all.sh
 shutdown -r now
 ```
 
-名札を再起動すると、ホスト名、パスワード、NAFUDAドライブがリセットされます。また、上記のstartup.shも削除されます。
+名札を再起動すると、ホスト名、パスワード、NAFUDAドライブがリセットされ、初期のようにスライドショーがはじまるはずです。また、上記のstartup.shも削除されます。
+
+> 初期化と再起動をおこなうので、３分程度はお待ちください。
 
 > このstartup.shはNAFUDAドライブ内にあるので、初期化とともに消えます。
-
-情報がリセットされたことを確認したら、`startup.sh`を削除してください
 
 
 ### NAFUDAドライブがマウントできない場合
 
-microSDを電子名札からぬき、PCにmicroSdを接続します。
+microSDを電子名札からぬき、PCにmicroSDを接続します。
 
-`boot`ドライブが現れますので、その中に`startup.sh`を作成し、以下の内容を記述します。
+`boot`という名称のドライブが現れますので、その直下に`startup.sh`を作成し、以下の内容を記述します。
 
 ```bash
 bash /home/pi/bcon_nafuda/setup_script/reset_all.sh
@@ -67,7 +67,7 @@ bash /home/pi/bcon_nafuda/setup_script/reset_all.sh
 
 microSDをPCから正しく取り外し、名札に再接続して再起動をすると、ホスト名、パスワード、NAFUDAドライブがリセットされます。
 
-リセットされたことを確認したら、`startup.sh`は削除してください。
+リセットされたことを確認したら、もう一度PCにmicroSDを接続して操作するなどして、`startup.sh`を削除してください。
 
 > 削除をしないと、起動の度にリセットがかかりつづけます。
 
@@ -76,11 +76,11 @@ microSDをPCから正しく取り外し、名札に再接続して再起動を�
 
 `reset_all.sh`を用いた方法では、NAFUDAドライブ以外のファイルをリセットすることはできません。
 
-完全にリセットするには、microSDを完全に初期化する必要があります。
-
-イメージを以下よりDLして、Etcherなどのソフトで焼いてください。
+microSDを配布時の状態に完全にリセットするには、イメージを以下よりDLしてmicroSDに書き込みする必要があります。
 
 イメージURL:TBD
+
+Etcherやddなどで書き込みをしてください。
 
 [Etcher はこちらからDLできます](https://etcher.io/)。
 
