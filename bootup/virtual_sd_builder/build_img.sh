@@ -13,8 +13,22 @@ BASE_DIR=`dirname "${0}"`
 
 # remove old image.
 set +e
-umount ${VSD_BASE_DIR}
-rm ${VSD_IMG_PATH}
+if [ ! 0 -eq `mount | grep -c ${VSD_BASE_DIR}` ]
+then
+    umount ${VSD_BASE_DIR}
+    if [ ! $? -eq 0 ]
+    then
+        echo "unmount failed"
+        fuser -muv ${VSD_BASE_DIR}
+        echo "unmount failed disk busy `fuser -muv ${VSD_BASE_DIR}`" | show_txt -
+        exit 1
+    fi
+fi
+
+if [ -e ${VSD_IMG_PATH} ]
+then
+    rm  ${VSD_IMG_PATH}
+fi
 set -e
 
 # create loopback image.
@@ -29,7 +43,7 @@ then
     /bin/mkdir ${VSD_BASE_DIR}
 fi
 
-/bin/mount -t vfat -o loop,sync,rw,noatime,dmask=000,fmask=111,iocharset=utf8 ${VSD_IMG_PATH} ${VSD_BASE_DIR}
+${VSD_RW}
 
 # copy default files
 /bin/cp -r ${BASE_DIR}/skel/* ${VSD_BASE_DIR}
@@ -41,7 +55,10 @@ fi
 /bin/cp -r ${BASE_DIR}/../../simple_sample ${VSD_BASE_DIR}/
 
 # recovery exists files from boot partition
+set +e
 /bin/cp -r /boot/default_* ${VSD_BASE_DIR}
+set -e
 
 /bin/umount ${VSD_BASE_DIR}
 
+exit 0

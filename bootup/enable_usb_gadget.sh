@@ -19,7 +19,7 @@ fi
 
 G_MODE=""
 if [ -e ${VSD_BASE_DIR}/enable_g_ether ]
-    then
+then
     G_MODE="g_ether"
     ${VSD_RW}
     /bin/rm ${VSD_BASE_DIR}/enable_g_ether

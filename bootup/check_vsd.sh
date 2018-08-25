@@ -8,42 +8,61 @@ fi
 
 . const.sh
 
+# スタック回避のため
+set +e
+
+# try mount vsd
 ${VSD_RO}
 
 DO_VSD_REBUILD=0
 
-# mount failed. need rebuild
+# check mount success
 if [ 0 -eq `mount | grep -c ${VSD_BASE_DIR}` ]
 then
-  DO_VSD_REBUILD=1
+    DO_VSD_REBUILD=1
 fi
 
-# force rebuild switch
+# force rebuild switch 1
+if [ -e "/boot/vsd_rebuild" ]
+then
+    rm  "/boot/vsd_rebuild"
+    DO_VSD_REBUILD=1
+fi
+
+# force rebuild switch 2
 if [ -e "${VSD_BASE_DIR}/vsd_rebuild" ]
 then
-  DO_VSD_REBUILD=1
+    # vsd_rebuildは後のrebuildで消えるはずなので削除しない
+    DO_VSD_REBUILD=1
 fi
 
-
-REBUILDED=""
-
-# do rebuild.
+# Rebuild execute when need.
 if [ ${DO_VSD_REBUILD} -eq 1 ]
 then
-  echo "REBUILD VSD"
-  ${SCRIPT_DIR}/virtual_sd_builder/build_img.sh
-  ${VSD_RO}
-  REBUILDED="REBUILDED"
+    REBUILD_IMG_RESULT="`${SCRIPT_DIR}/virtual_sd_builder/build_img.sh 2>&1`"
+
+    if [ ! $? -eq 0 ]
+    then
+        echo "VSD REBUILD FAILED ${REBUILD_IMG_RESULT}"
+        echo "VSD REBUILD FAILED ${REBUILD_IMG_RESULT}" | show_txt -
+        exit 1
+    fi
+
+    ${VSD_RO}
+
+    # check mount success
+    if [ 0 -eq `mount | grep -c ${VSD_BASE_DIR}` ]
+    then
+        # broken
+        echo "VSD MOUNT FAILED"
+        echo "VSD MOUNT FAILED" show_txt -
+        exit 1
+    fi
+
+    echo "REBUILDED"
 fi
 
+# スタック回避のため
+set -e
 
-# check rebuild success
-if [ 0 -eq `mount | grep -c ${VSD_BASE_DIR}` ]
-then
-  # broken
-  echo "FATAL: VSD REBUILD FAIL"
-  echo "FATAL: VSD REBUILD FAIL" | ${SCRIPT_DIR}/../show_txt/show_txt.py -
-  exit 1
-fi
-
-echo "${REBUILDED}"
+echo "vsd mount success"

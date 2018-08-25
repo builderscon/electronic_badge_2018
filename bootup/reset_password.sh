@@ -72,9 +72,10 @@ ${VSD_RW}
 
 # ランダム文字列をパスワード用に生成する
 set +e # tweak: for openssl put "unable to write 'random state'" with systemd. FIY https://www.openssl.org/docs/faq.html#USER2
-/usr/bin/openssl rand -base64 6 > ${VSD_BASE_DIR}/default_passwd.txt
+/usr/bin/openssl rand -base64 6 > /boot/default_passwd.txt
 set -e
-cp ${VSD_BASE_DIR}/default_passwd.txt /boot/default_passwd.txt
+
+cp /boot/default_passwd.txt ${VSD_BASE_DIR}/default_passwd.txt
 /bin/echo "pi:`/bin/cat ${VSD_BASE_DIR}/default_passwd.txt`" | /usr/sbin/chpasswd
 
 ${VSD_RO}

@@ -10,6 +10,9 @@ VSD_BASE_DIR=/mnt/virtual_sd
 VSD_IMG_PATH=/home/pi/virtual_sd.img
 
 set +e
-umount ${VSD_BASE_DIR}
+if [ ! 0 -eq `mount | grep -c ${VSD_BASE_DIR}` ]
+then
+    umount ${VSD_BASE_DIR}
+fi
 mount -t vfat -o loop,sync,ro,noatime,dmask=000,fmask=111,iocharset=utf8,noauto ${VSD_IMG_PATH} ${VSD_BASE_DIR}
 set -e
