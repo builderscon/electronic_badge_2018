@@ -110,7 +110,7 @@ set -e
 IPADDR_LIST=`ip -f inet -o addr show |grep -v 127.0.0.1 |cut -d\  -f 2,7 |cut -d/ -f 1`
 COMMIT_ID=`git -C /home/pi/bcon_nafuda log --oneline |head -1`
 
-DEFAULT_PASSWORD="{default_passwd.txt missing}"
+DEFAULT_PASSWORD="default_passwd.txt missing"
 if [ -e "${VSD_BASE_DIR}/default_passwd.txt" ]
 then
     DEFAULT_PASSWORD=`cat ${VSD_BASE_DIR}/default_passwd.txt`
