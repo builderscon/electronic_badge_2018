@@ -18,6 +18,11 @@ fi
 # check virtual sd (NAFUDA drivec) mount and, rebuild when mount error.
 IS_REBUILDED=`${SCRIPT_DIR}/check_vsd.sh | tail -1`
 
+###
+### enable usb gadget
+###
+G_MODE=`${SCRIPT_DIR}/enable_usb_gadget.sh`
+
 
 #
 ${SCRIPT_DIR}/reset_password.sh
@@ -62,12 +67,6 @@ then
   rm ${VSD_BASE_DIR}/id_rsa.pub
   ${VSD_RO}
 fi
-
-
-###
-### enable usb gadget
-###
-G_MODE=`${SCRIPT_DIR}/enable_usb_gadget.sh`
 
 
 ###
