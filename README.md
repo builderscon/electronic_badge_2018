@@ -8,33 +8,24 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 
 ## 電子名札の簡単画像設定
 
-##### 1. 名札にとりつけられたUSBケーブルを取り外します。
-
-<a href="docs/assets/connect_center_usb_port_before.jpg"><img src="docs/assets/connect_center_usb_port_before.jpg" style="width:20%"></a>
-<a href="docs/assets/plugin_usb_battery.jpg"><img src="docs/assets/plugin_usb_battery.jpg" style="width:20%"></a>
-<a href="docs/assets/detach_cable.jpg"><img src="docs/assets/detach_cable.jpg" style="width:20%"></a>
-
-
-##### 2. 取り外したケーブルで、名札とPCをを接続してください。その時にPCへと接続するUSBポートは右側（中央寄り）です。
-
-<a href="docs/assets/connect_nafuda_to_pc.jpg"><img src="docs/assets/connect_nafuda_to_pc.jpg" style="width:20%"></a>
-
-##### 3. 名札の起動を待ちます。名札が起動完了後、PCにNAFUDAドライブとして認識されます。
-
-<a href="docs/assets/nafuda_drive.jpg"><img src="docs/assets/nafuda_drive.jpg" style="width:20%"></a>
-
-##### 4. NAFUDAドライブ中の`img` ディレクトリに好きな画像(拡張子png,jpeg形式)をコピーし、不要な画像を消したり、imgディレクトリから外してください。
-
-<a href="docs/assets/nafuda_drive_img_dir.jpg"><img src="docs/assets/nafuda_drive_img_dir.jpg" style="width:20%"></a>
-<a href="docs/assets/img_copy.jpg"><img src="docs/assets/img_copy.jpg" style="width:20%"></a>
-
-##### 5. コピーが終わったら、ドライブを一般的なUSBメモリ同様にイジェクト操作し、少し待ってLEDの点滅がないことを確認してから電子名札とPCのUSBケーブルを抜いてください。
-
-<a href="docs/assets/eject_nafuda.jpg"><img src="docs/assets/eject_nafuda.jpg" style="width:20%"></a>
-
-##### 6. 名札とUSBバッテリーをつなぎ、名札を起動してください。
-
-##### 7. imgに保存した画像が、スライドショー表示されます。名札をエンジョイしてください！
+1. 名札にとりつけられたUSBケーブルを取り外します。
+    - [(画像リンク)ラズパイ側からケーブルを抜く](docs/assets/connect_center_usb_port_before.jpg)
+    - [(画像リンク)バッテリーからケーブルを抜く](docs/assets/plugin_usb_battery.jpg)
+    - [(画像リンク)板からケーブルをとりはずす](docs/assets/detach_cable.jpg)
+2. 取り外したケーブルで、名札とPCをを接続してください。その時にPCへと接続するUSBポートは右側（中央寄り）です。
+    - [(画像リンク)PCとの接続概要](docs/assets/connect_nafuda_to_pc.jpg)
+3. 名札の起動を待ちます。名札が起動完了後、PCにNAFUDAドライブとして認識されます。
+    - [(画像リンク)NAFUDAドライブ](docs/assets/nafuda_drive.jpg)
+4. NAFUDAドライブ中の`img` ディレクトリに好きな画像(拡張子png,jpeg形式)をコピーし、不要な画像を消したり、imgディレクトリから外してください。
+    - [(画像リンク)imgディレクトリの様子](docs/assets/nafuda_drive_img_dir.jpg)
+    - [(画像リンク)ファイルコピーの様子](docs/assets/img_copy.jpg)
+5. コピーが終わったら、ドライブを一般的なUSBメモリ同様にイジェクト操作し、少し待ってLEDの点滅がないことを確認してから電子名札とPCのUSBケーブルを抜いてください。
+    - [(画像リンク)取り出しの様子](docs/assets/eject_nafuda.jpg)
+6. 名札とUSBバッテリーをつなぎ、名札を起動してください。
+    - [(画像リンク)バッテリーにケーブルを挿す](docs/assets/plugin_usb_battery.jpg)
+    - [(画像リンク)ラズパイにケーブルを挿す](docs/assets/connect_center_usb_port_before.jpg)
+7. imgに保存した画像が、スライドショー表示されます。名札をエンジョイしてください！
+    - 初期設定では起動直後に、数秒NAFUDAの情報表示をおこなわれ、その後にスライドショーが始まります。
 
 > ※ 画像のファイル名は英数小文字で設定ください。
 
