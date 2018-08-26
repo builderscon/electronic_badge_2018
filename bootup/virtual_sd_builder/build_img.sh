@@ -49,7 +49,7 @@ ${VSD_RW}
 /bin/cp -r ${BASE_DIR}/skel/* ${VSD_BASE_DIR}
 
 # copy docs(snapshot)
-/bin/cp ${BASE_DIR}/../../docs/* ${VSD_BASE_DIR}/docs/
+/bin/cp -r ${BASE_DIR}/../../docs/* ${VSD_BASE_DIR}/docs/
 
 # copy simple sample
 /bin/cp -r ${BASE_DIR}/../../simple_sample ${VSD_BASE_DIR}/
