@@ -41,20 +41,21 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 ***
 
 
-## 以下はドキュメントです。
+## ドキュメント
 
 - [README.md 最初にみてください](docs/README.md)
 - [Raspbery Pi へのログイン方法](docs/HOW_TO_LOGIN.md)
+- [トラブルシュート](docs/TROUBLESHOOT.md)
 - [LICENSE](docs/LICENSE.md)
 - [その他ドキュメント](docs/)
 
 
-## sample application
+## サンプルアプリ
 
 - [simple_sample - 一番簡単、Hello,World!](simple_sample/README.md)
 - [simple nafuda - 名札アプリ(デフォルト導入済み)](simple_nafuda/)
-- [show_img - 画像を表示します](show_img/)
-- [show_txt - ファイル、あるいは標準入力からのテキストを表示します](show_txt/)
+- [show_img - 画像を表示](show_img/)
+- [show_txt - ファイル、あるいは標準入力からのテキストを表示](show_txt/)
 - [weather - 今日のお天気](weather/)
 
 
