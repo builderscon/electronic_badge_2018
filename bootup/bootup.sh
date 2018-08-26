@@ -125,7 +125,7 @@ commit: ${COMMIT_ID}
 
 =INFO=
 ip: ${IPADDR_LIST}
-default password: ``
+default password: ${DEFAULT_PASSWORD}
 usb gadget mode: ${G_MODE}
 default hostname: ${HOSTNAME}
 
