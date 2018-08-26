@@ -209,9 +209,7 @@ USB シリアル変換ケーブル（amazonなどで1000円くらい）を接続
 
 ## 補足：g_etherなどのモードを固定したい場合
 
-（本当にもどらなくなりますよ！なんらか別途の方法でリカバリーができない方は詰みますよ！）
-
-もし再起動しても`g_mass_storage`モードにもどしたくない場合は、ログインして`/boot/cmdline.txt`の`modules-load`指定に、`,g_ether`などと追記します。
+もし再起動しても`g_mass_storage`モードにもどしたくない場合は、microSDを別のPCでマウントし`boot`ドライブの`cmdline.txt`の`modules-load`指定に、`,g_ether`などと追記することで固定ができます。
 
 ```
 # 修正前
@@ -220,9 +218,24 @@ USB シリアル変換ケーブル（amazonなどで1000円くらい）を接続
 省略) modules-load=dwc2,g_ether
 ```
 
+その上で、`boot`ドライブに`startup.sh`を作成し、以下をを追記します。
+
+#### g_etherの場合
+
+```bash
+ifconfig usb0 up
+ifconfig usb0 169.254.123.45/16 # IP固定
+```
+
+#### g_serialの場合
+
+```
+systemctl start getty@ttyGS0.service
+```
+
 > ※ 起動時、`bootup.sh`が呼ばれた時点で`g_mass_storage`,`g_ether`,`g_serial`いずれかのmoduleがロードされていた場合には、`bootup.sh`内でモジュールをロードしません。
 
 > ※ `g_multi`, `g_cdc`などは十分な検証ができませんでしたので対象外としています。もし指定したい場合には`bootup.sh`を修正するなどご自身でトライしてみてください。
 
-戻したい場合には、microSDを他のPCなどでマウントし、`boot`（という名称で認識される）ドライブの`cmdline.txt`を修正してください。
+もし、この固定を戻したい場合には、再度microSDをマウントし、`cmdline.txt`と`startup.sh`の記述を削ってください。
 
