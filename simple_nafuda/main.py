@@ -68,11 +68,15 @@ def main():
 
             except OSError:
                 # maybe, the file is not correct image file.
-                print("load image fail: " +file)
+                print("load image fail: " + file)
 
             if "PSEUDO_EPD_MODE" in os.environ:
                 # guard for img bomb.
                 time.sleep(3)
+
+            # 一枚しか画像がなければ、スライドショーする意味がないので終了
+            if len(file_list) == 1:
+                exit(0)
 
 
 if __name__ == '__main__':
