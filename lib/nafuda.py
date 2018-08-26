@@ -23,7 +23,6 @@
 #
 
 
-
 import os
 import textwrap
 from PIL import Image
@@ -109,6 +108,17 @@ class Nafuda:
         self.draw_image_buffer(image_buffer, orientation)
 
     def draw_image_buffer(self, image_buffer, orientation=0):
+
+        # remove Alpha
+        if len(image_buffer.split()) > 3:
+            # make blank image
+            _image_buffer = Image.new('RGB', image_buffer.size, "#FFFFFF")
+
+            # draw image to center
+            _image_buffer.paste(image_buffer, (0, 0), image_buffer.split()[3])
+
+            # swap
+            image_buffer = _image_buffer
 
         # rotate image buffer
         if orientation != 0:
