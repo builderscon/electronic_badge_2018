@@ -183,7 +183,15 @@ $ sudo cu -l /dev/cu.ttyACM0 115200
 
 デバイスマネージャからCOMポートを確認し、Teratermなど通信ターミナルをもちいてください
 
-※ 起動時に自動的に`enable_g_*`は削除され、次の起動時にはUSBドライブとして認識するモードへ戻ります。
+- [`enable_g_serial`を作成し、名札を取り外す](assets/g_serial_win_1.png)
+- [再度さしこむと、Serialとして認識開始（ドライブは表示されません０](assets/g_serial_win_2.png)
+- [認識完了し、COMポート番号が表示される](assets/g_serial_win_3.png)
+- [デバイスマネージャからもCOMポート番号は確認可能です](assets/g_serial_win_4.png)
+- [Teratermなどをつかい、COMポート番号を指定して接続](assets/g_serial_win_5.png)
+- [ログインプロンプトが表示されるので、ID/PASSを入力してログイン](assets/g_serial_win_6.png)
+- [ログイン成功の様子](assets/g_serial_win_7.png)
+
+> ※ 起動時に自動的に`enable_g_*`は削除され、次の起動時にはUSBドライブとして認識するモードへ戻ります。
 
 
 ## 補足：アドバンスドな方法、USB to Serial（UART）を接続する
