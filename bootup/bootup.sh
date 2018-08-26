@@ -116,6 +116,9 @@ then
     DEFAULT_PASSWORD=`cat ${VSD_BASE_DIR}/default_passwd.txt`
 fi
 
+set +e
+HOSTNAME=`hostname`
+set -e
 
 STARUP_TEXT="NAFUDA
 commit: ${COMMIT_ID}
@@ -124,6 +127,7 @@ commit: ${COMMIT_ID}
 ip: ${IPADDR_LIST}
 default password: ``
 usb gadget mode: ${G_MODE}
+default hostname: ${HOSTNAME}
 
 ======
 builderscon
