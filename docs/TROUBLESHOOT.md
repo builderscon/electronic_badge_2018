@@ -121,9 +121,9 @@ microSDをPCから正しく取り外し、名札に再接続して再起動を�
 
 `reset_all.sh`を用いた方法では、NAFUDAドライブ以外のファイルをリセットすることはできません。
 
-microSDを配布時の状態に完全にリセットするには、イメージを以下よりDLしてmicroSDに書き込みする必要があります。
+microSDを配布時の状態に完全にリセットするには、イメージをダウンロードしてmicroSDに書き込みする必要があります。
 
-イメージURL:TBD
+イメージは[Releases](https://github.com/uzulla/bcon_nafuda/releases)からダウンロードできます。
 
 Etcherやddなどで書き込みをしてください。
 
