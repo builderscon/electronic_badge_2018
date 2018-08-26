@@ -61,14 +61,11 @@ $ touch /Volumes/NAFUDA/enable_g_ether
 
 > ※ 正しく設定されていると、起動時の情報表示で`usb gadget mode: g_ether`と表示されます。
 
-名札を取り外して、再度PCに接続してください。しばらくするとPCにNICとして認識されます。
+名札を取り外して、再度PCに接続してください。しばらくするとPCにネットワークインターフェイスとして認識されます。
 
-> ※ Windowsの場合、別途ドライバのインストール等が必要です。(自己責任でお願いいたします)
-> 「本当に様々な方法」があり（ドライバを拾ってきて入れる、ラズパイ側のパラメタ設定を色々かえて認識させる等）「公式」な手法はありません。
-> `g_ether windows ssh`でネットを検索してRaspberry Pi Zero wをUSBケーブルのみで接続する方法を確認し、お手元のWindowsで正しく動作する方法を探してみてください。
-> 
-> 参考： https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget  
-> 参考： https://qiita.com/gpsnmeajp/items/126fadd3e47cdd4a6c00  
+> ※ Windowsの場合はネットワークインターフェイスとして認識させるのに様々な手法があり「公式」な手法はありません。
+> [ドライバーを導入して認識させる例をこちらに記載いたします](G_ETHER_WITH_WINDOWS.md)が、うまくいかない事もあります。
+> うまくいかない場合は、`g_ether windows ssh`などでネットを検索して、お手元のWindowsで正しく動作する方法を探してみてください。
 
 
 
