@@ -19,6 +19,7 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 4. NAFUDAドライブ中の`img` ディレクトリに好きな画像(拡張子png,jpeg形式)をコピーし、不要な画像を消したり、imgディレクトリから外してください。
     - [(画像リンク)imgディレクトリの様子](docs/assets/nafuda_drive_img_dir.jpg)
     - [(画像リンク)ファイルコピーの様子](docs/assets/img_copy.jpg)
+    - [(画像リンク)不要画像削除の様子](docs/assets/delete_img.jpg)
 5. コピーが終わったら、ドライブを一般的なUSBメモリ同様にイジェクト操作し、少し待ってLEDの点滅がないことを確認してから電子名札とPCのUSBケーブルを抜いてください。
     - [(画像リンク)取り出しの様子](docs/assets/eject_nafuda.jpg)
 6. 名札とUSBバッテリーをつなぎ、名札を起動してください。
