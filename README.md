@@ -25,6 +25,7 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 6. 名札とUSBバッテリーをつなぎ、名札を起動してください。
     - [(画像リンク)バッテリーにケーブルを挿す](docs/assets/plugin_usb_battery.jpg)
     - [(画像リンク)ラズパイにケーブルを挿す](docs/assets/connect_center_usb_port_before.jpg)
+    - [(画像リンク)ケーブルの取り回し](docs/assets/back_image.jpg)
 7. imgに保存した画像が、スライドショー表示されます。名札をエンジョイしてください！
     - 初期設定では起動直後に、数秒NAFUDAの情報表示をおこなわれ、その後にスライドショーが始まります。
 
