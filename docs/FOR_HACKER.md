@@ -6,7 +6,7 @@
 
 詳しくは 以下レポジトリを見てください。
 
-https://github.com/uzulla/bcon_nafuda
+https://github.com/builderscon/electronic_badge_2018
 
 > ※ ログインができるなら、まずは`git pull`して更新することをおすすめします
 

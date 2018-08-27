@@ -34,7 +34,7 @@ Kernel version:4.14
 - https://www.waveshare.com/wiki/4.2inch_e-Paper_Module
 
 
-## 上記以外の`~/bcon_nafuda`以下の電子名札のソフトウェア、ドキュメント、データ
+## 上記以外の`~/electronic_badge_2018`以下の電子名札のソフトウェア、ドキュメント、データ
 
 上記を除き、本レポジトリにふくまれる「ソースコード」はそれぞれのファイルに記載されたライセンスとなります。
 

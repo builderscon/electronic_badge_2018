@@ -6,9 +6,9 @@
 
 最新版のドキュメントは以下のURLにアクセスしてご確認ください。
 
-> ※ あなたが今GitHubのmaterブランチをみているなら最新版です。
+> ※ あなたが今GitHubのサイトでみているならば最新版です。
 
-https://github.com/uzulla/bcon_nafuda
+https://github.com/builderscon/electronic_badge_2018
 
 
 ## 最初にご注意いただきたいこと

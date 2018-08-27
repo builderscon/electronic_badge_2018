@@ -14,7 +14,7 @@ simple sample
 
 # 概要説明
 
-systemdに登録された`nafuda-bootup.service`(`bcon_nafuda/bootup/bootup.sh`)は、最後にNAFUDAドライブの直下にstartup.shがあればそれを起動します。
+systemdに登録された`nafuda-bootup.service`(`electronic_badge_2018/bootup/bootup.sh`)は、最後にNAFUDAドライブの直下にstartup.shがあればそれを起動します。
 
 > ※ その場合、simple-nafudaは起動されません。
 
@@ -44,9 +44,9 @@ show_img /tmp/bcon.png
 # 　　　busyだと失敗するので、やはりログインできるようになってからが良いでしょう）
 ```
 
-> ※ `show_img`の実体は `/home/pi/bcon_nafuda/show_img/show_img.py`
+> ※ `show_img`の実体は `/home/pi/electronic_badge_2018/show_img/show_img.py`
 
-> ※ `show_txt`の実体は `/home/pi/bcon_nafuda/show_txt/show_txt.py`
+> ※ `show_txt`の実体は `/home/pi/electronic_badge_2018/show_txt/show_txt.py`
 
 # おまけ
 
@@ -77,7 +77,7 @@ ls -al ~/ 2>&1 | show_txt -
 
 ```bash
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-git -C /home/pi clone git@github.com:uzulla/bcon_nafuda.git 2>&1 | show_txt -
+git -C /home/pi clone git@github.com:builderscon/electronic_badge_2018.git 2>&1 | show_txt -
 git -C /home/pi pull 2>&1 | show_txt -
 ```
 

@@ -2,9 +2,9 @@
 Description=simple nafuda
 
 [Service]
-WorkingDirectory=/home/pi/bcon_nafuda/simple_nafuda/
+WorkingDirectory=/home/pi/electronic_badge_2018/simple_nafuda/
 ExecStart=/usr/bin/python3.5 main.py
-ExecStopPost=/home/pi/bcon_nafuda/simple_nafuda/exec_stop_post.sh
+ExecStopPost=/home/pi/electronic_badge_2018/simple_nafuda/exec_stop_post.sh
 Restart=no
 Type=simple
 User=pi

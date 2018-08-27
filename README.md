@@ -1,4 +1,4 @@
-BCON NAFUDA
+electronic badge 2018
 ======
 
 builderscon tokyo 2018で配布される「電子名札」の向けのソフトウェアおよび情報です。

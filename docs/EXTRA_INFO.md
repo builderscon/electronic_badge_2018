@@ -7,7 +7,7 @@
 
 電子名札は`g_mass_storage`を用いることで、`/home/pi/virtual_sd.img`のloop deviceをMass Storage deviceとしてUSBポートへ公開しています。
 
-そのloop deviceは、別途 `/mnt/virtual_sd`にread onlyでマウントされており、起動時に`/home/pi/bcon_nafuda/simple_nafuda`プログラムから読み込まれています。
+そのloop deviceは、別途 `/mnt/virtual_sd`にread onlyでマウントされており、起動時に`/home/pi/electronic_badge_2018/simple_nafuda`プログラムから読み込まれています。
 
 > ※ ラズパイとPC（母艦）両方から同時にマウントされるため、結構危険なやり方です。最低限の対処としてroでマウントしています。ラズパイからrwでもマウントできますが自己責任でお願いいたします。
 
@@ -18,7 +18,7 @@
 
 Raspberry pi側からから見たディレクトリ構成は以下の通りです。
 
-- `/home/pi/bcon_nafuda` 各種コード、詳しくはそれぞれの内容をご確認ください
+- `/home/pi/electronic_badge_2018` 各種コード、詳しくはそれぞれの内容をご確認ください
 - `/home/pi/virtual_sd.img` NAFUDAドライブの実態（`/mnt/virtual_sd`にループバックでマウントされます）
 - `/mnt/virtual_sd` NAFUDAドライブのイメージをマウントしたもの
 - `/mnt/virtual_sd/img` 名札に表示する画像ファイルが保存された、NAFUDAドライブのimgディレクトリ
@@ -28,9 +28,9 @@ Raspberry pi側からから見たディレクトリ構成は以下の通りで�
 
 NAFUDAドライブは `/home/pi/virtual_sd.img` が実体で、readonlyでマウントされています。マウントは`bootup/bootup.sh`で行われています。
 
-rw(書き込み可)でマウントするには、`sudo ~/bcon_nafuda/bootup/mount_vsd_rw.sh`を実行してください。
+rw(書き込み可)でマウントするには、`sudo ~/electronic_badge_2018/bootup/mount_vsd_rw.sh`を実行してください。
 
-ro(書き込み不可)でマウントするには、`sudo ~/bcon_nafuda/bootup/mount_vsd_ro.sh`を実行してください。
+ro(書き込み不可)でマウントするには、`sudo ~/electronic_badge_2018/bootup/mount_vsd_ro.sh`を実行してください。
 
 > ※ PCでNAFUDAドライブをマウントしつつ読み書きするとFSが壊れたりします。rwに変更する場合は自己責任でお願いいたします。
 

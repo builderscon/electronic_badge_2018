@@ -25,7 +25,7 @@ $ export WPA_SSID="YOUR SSID"
 $ export WPA_PSK="\"YOUR PASSWORD\"" 
 # 上記の `\"` は平文のパスワードで設定するのには重要です
 
-$ cd bcon_nafuda/setup_script
+$ cd electronic_badge_2018/setup_script
 $ ./setup_boot_partition.sh
 
 # 以下成功時出力例

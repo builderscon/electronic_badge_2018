@@ -23,10 +23,10 @@ permitted by applicable law.
  |__L  J__||__L   J__||__|     J______F |______F |__L   J__|
 
 at first, please update software and documents.
-$ git -C ~/bcon_nafuda/ pull
+$ git -C ~/electronic_badge_2018/ pull
 
-Docs: ~/bcon_nafuda/docs
-(On web : https://github.com/uzulla/bcon_nafuda )
+Docs: ~/electronic_badge_2018/docs
+(On web : https://github.com/builderscon/electronic_badge_2018 )
 
 If you want to stop the nafuda slideshow.
 $ sudo systemctl stop simple-nafuda

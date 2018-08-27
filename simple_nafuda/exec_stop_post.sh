@@ -22,10 +22,10 @@ then
   exit
 fi
 
-sudo /home/pi/bcon_nafuda/bootup/mount_vsd_rw.sh
+sudo /home/pi/electronic_badge_2018/bootup/mount_vsd_rw.sh
 echo "exit with error" > ${VSD_BASE_DIR}/stop.log
 journalctl -b >> ${VSD_BASE_DIR}/stop.log
-sudo /home/pi/bcon_nafuda/bootup/mount_vsd_ro.sh
+sudo /home/pi/electronic_badge_2018/bootup/mount_vsd_ro.sh
 
 echo "== exit with error ==" > ${SCRIPT_DIR}/stop.log
 journalctl -u "simple-nafuda" >>  ${SCRIPT_DIR}/stop.log
@@ -36,4 +36,4 @@ cat ${SCRIPT_DIR}/stop.log | \
   grep -v "bootup/mount_vsd_" | \
   sed  "s/simple-nafuda.service: //" | \
   sed "s/.*\]: //" | \
-  tail -10 | /home/pi/bcon_nafuda/show_txt/show_txt.py -
+  tail -10 | /home/pi/electronic_badge_2018/show_txt/show_txt.py -

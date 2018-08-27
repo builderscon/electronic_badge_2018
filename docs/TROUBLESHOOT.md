@@ -85,7 +85,7 @@ $ vi /Volumes/NAFUDA/startup.sh
 以下の内容を記述します。
 
 ```bash
-bash /home/pi/bcon_nafuda/setup_script/reset_all.sh
+bash /home/pi/electronic_badge_2018/setup_script/reset_all.sh
 shutdown -r now
 ```
 
@@ -105,7 +105,7 @@ microSDを電子名札からぬき、PCにmicroSDを接続します。
 `boot`という名称のドライブが現れますので、その直下に`startup.sh`を作成し、以下の内容を記述します。
 
 ```bash
-bash /home/pi/bcon_nafuda/setup_script/reset_all.sh
+bash /home/pi/electronic_badge_2018/setup_script/reset_all.sh
 ```
 
 microSDをPCから正しく取り外し、名札に再接続して再起動をすると、ホスト名、パスワード、NAFUDAドライブがリセットされます。
@@ -123,7 +123,7 @@ microSDをPCから正しく取り外し、名札に再接続して再起動を�
 
 microSDを配布時の状態に完全にリセットするには、イメージをダウンロードしてmicroSDに書き込みする必要があります。
 
-イメージは[Releases](https://github.com/uzulla/bcon_nafuda/releases)からダウンロードできます。
+イメージは[Releases](https://github.com/builderscon/electronic_badge_2018/releases)からダウンロードできます。
 
 Etcherやddなどで書き込みをしてください。
 

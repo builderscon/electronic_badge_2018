@@ -3,9 +3,9 @@ Description=NAFUDA bootup
 After=multi-user.target
 
 [Service]
-WorkingDirectory=/home/pi/bcon_nafuda/bootup
-ExecStart=/home/pi/bcon_nafuda/bootup/bootup.sh
-ExecStopPost=/home/pi/bcon_nafuda/bootup/exec_stop_post.sh
+WorkingDirectory=/home/pi/electronic_badge_2018/bootup
+ExecStart=/home/pi/electronic_badge_2018/bootup/bootup.sh
+ExecStopPost=/home/pi/electronic_badge_2018/bootup/exec_stop_post.sh
 Type=oneshot
 
 [Install]
