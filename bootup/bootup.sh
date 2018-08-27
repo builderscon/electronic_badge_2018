@@ -74,6 +74,8 @@ then
   mv ${VSD_BASE_DIR}/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
   ${VSD_RO}
   sudo systemctl restart networking.service
+  sudo systemctl daemon-reload
+  sudo systemctl restart dhcpcd
   sleep 5 # wait for dhcp
 fi
 
