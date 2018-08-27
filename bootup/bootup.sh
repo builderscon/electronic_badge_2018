@@ -86,7 +86,7 @@ fi
 
 if [ -e ${VSD_BASE_DIR}/id_rsa.pub ]
 then
-  if [ -d /home/pi/.ssh ]
+  if [ ! -d /home/pi/.ssh ]
   then
     mkdir /home/pi/.ssh
     chown pi:pi /home/pi/.ssh
@@ -94,8 +94,8 @@ then
   fi
 
   cat ${VSD_BASE_DIR}/id_rsa.pub >> /home/pi/.ssh/authorized_keys
-  chmod 700 /home/pi/.ssh/authorized_keys
   chown pi:pi /home/pi/.ssh/authorized_keys
+  chmod 700 /home/pi/.ssh/authorized_keys
 
   ${VSD_RW}
   rm ${VSD_BASE_DIR}/id_rsa.pub
