@@ -66,7 +66,10 @@ ${SCRIPT_DIR}/reset_hostname.sh
 
 if [ -e ${VSD_BASE_DIR}/wpa_supplicant.conf ]
 then
-  cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf.old
+  if [ -e /etc/wpa_supplicant/wpa_supplicant.conf ]
+  then
+    cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf.old
+  fi
   ${VSD_RW}
   mv ${VSD_BASE_DIR}/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
   ${VSD_RO}
