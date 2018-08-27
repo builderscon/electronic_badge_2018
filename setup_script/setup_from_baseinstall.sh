@@ -22,7 +22,7 @@ set +e
 rm -rf /home/pi/electronic_badge_2018
 set -e
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-git -C /home/pi clone git@github.com:builderscon/electronic_badge_2018.git
+git -C /home/pi clone https://github.com/builderscon/electronic_badge_2018.git
 
 /home/pi/electronic_badge_2018/show_img/show_img.py /home/pi/electronic_badge_2018/bootup/virtual_sd_builder/skel/img/info.png
 

@@ -77,7 +77,7 @@ ls -al ~/ 2>&1 | show_txt -
 
 ```bash
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-git -C /home/pi clone git@github.com:builderscon/electronic_badge_2018.git 2>&1 | show_txt -
+git -C /home/pi clone https://github.com/builderscon/electronic_badge_2018.git 2>&1 | show_txt -
 git -C /home/pi pull 2>&1 | show_txt -
 ```
 
