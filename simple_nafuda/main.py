@@ -58,61 +58,12 @@ CLOUD_QR_CODE_FILE_PATH = IMG_DIR + "/" + CLOUD_QR_CODE_FILE_NAME
 
 
 def main():
-    # try get images from cloud.
-    # QRコードに置換する画像がなければ、クラウド機能は不要と判断して実行しない
-    if os.path.isfile(CLOUD_QR_CODE_FILE_PATH):
-        try:
-            # 設定JSONをサーバーから取得してみる
-            r = requests.get(get_control_url() + "json")
-            if r.status_code != 200:
-                raise ValueError("json not found")
 
-            json_str = r.text
+    result = load_settings_from_cloud()
 
-            data = json.loads(json_str)
-            img_list = data['list']
-            if not isinstance(img_list, list):
-                raise ValueError("maybe invalid json")
-
-            if len(img_list) == 0:
-                raise ValueError("empty list")
-
-            # 過去のJSONと一致するか？
-            if os.path.isfile(CLOUD_JSON_CACHE_PATH):
-                with open(CLOUD_JSON_CACHE_PATH, "r") as jc:
-                    cached_json = jc.read()
-                    if cached_json == json_str:
-                        raise ValueError("json not updated")
-
-            # rwで再マウント
-            if os.path.isfile("/usr/bin/mount_vsd_rw"):
-                os.system('/usr/bin/mount_vsd_rw')
-
-            # clean up img dir
-            file_list_to_rm = os.listdir(IMG_DIR)
-            for f in file_list_to_rm:
-                p = IMG_DIR+"/"+f
-                if os.path.isfile(p):
-                    if re.search('^[^\.].*\.(png|jpg|jpeg|gif)', p, re.IGNORECASE):
-                        if f != CLOUD_QR_CODE_FILE_NAME:
-                            os.remove(p)
-
-            id = 1
-            for img in img_list:
-                root, ext = os.path.splitext(img)
-                get_and_save_file(get_control_url()+"/"+img, IMG_DIR+"/"+str(id)+ext)
-                id = id + 1
-
-            # save json
-            with open(CLOUD_JSON_CACHE_PATH, "w") as jc:
-                jc.write(json_str)
-
-            # roで再マウント
-            if os.path.isfile("/usr/bin/mount_vsd_ro"):
-                os.system('/usr/bin/mount_vsd_rw')
-
-        except:
-            traceback.print_exc()
+    if result is not True:
+        # 場合によってはエラーかもしれないけど、とまると困るので続行させる
+        print(result)
 
     # load image file list
     file_list = []
@@ -155,6 +106,71 @@ def main():
             # 一枚しか画像がなければ、スライドショーする意味がないので終了
             if len(file_list) == 1:
                 exit(0)
+
+def load_settings_from_cloud():
+    # QRコードに置換する画像がなければ、クラウド機能は不要と判断して実行しない
+    if os.path.isfile(CLOUD_QR_CODE_FILE_PATH):
+        try:
+            # 設定JSONをサーバーから取得試行
+            r = requests.get(get_control_url() + "json")
+            if r.status_code != 200:
+                return "json not found"
+
+            json_str = r.text
+
+            data = json.loads(json_str)
+            img_list = data['list']
+            if not isinstance(img_list, list):
+                return "maybe invalid json"
+
+            if len(img_list) == 0:
+                # 空の場合はなにもしない
+                return "empty list"
+
+            # 過去のJSONがあれば、更新があるか確認
+            if os.path.isfile(CLOUD_JSON_CACHE_PATH):
+                with open(CLOUD_JSON_CACHE_PATH, "r") as jc:
+                    cached_json = jc.read()
+                    if cached_json == json_str:
+                        return "json not updated"
+
+            # rwで再マウント
+            if os.path.isfile("/usr/bin/mount_vsd_rw"):
+                if os.system('/usr/bin/mount_vsd_rw') != 0:
+                    return "mount_vsd_rw fail."
+
+            # clean up img dir
+            file_list_to_rm = os.listdir(IMG_DIR)
+            for f in file_list_to_rm:
+                p = IMG_DIR+"/"+f
+                if os.path.isfile(p):
+                    if re.search('^[^\.].*\.(png|jpg|jpeg|gif)', p, re.IGNORECASE):
+                        if f != CLOUD_QR_CODE_FILE_NAME:
+                            os.remove(p)
+
+            # 画像をDLして保存
+            id = 1
+            for img in img_list:
+                root, ext = os.path.splitext(img)
+                get_and_save_file(get_control_url()+"/"+img, IMG_DIR+"/"+str(id)+ext)
+                id = id + 1
+
+            # save json
+            with open(CLOUD_JSON_CACHE_PATH, "w") as jc:
+                jc.write(json_str)
+
+            # roで再マウント
+            if os.path.isfile("/usr/bin/mount_vsd_ro"):
+                if os.system('/usr/bin/mount_vsd_ro') != 0:
+                    return "mount_vsd_ro fail."
+
+            return True
+
+        except:
+            # 止まられると困る！
+            traceback.print_exc()
+            return False
+
 
 
 def get_nafuda_id():
