@@ -78,7 +78,7 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 
 ||
 |:---:|
-| ![mercari](bootup/virtual_sd_builder/skel/img/gadget_sponsor_mercari.png) |
+| ![mercari](bootup/virtual_sd_builder/skel/img/1_gadget_sponsor_mercari.png) |
 |謎ガジェットにご理解のあるmercari様|
 
 
