@@ -48,7 +48,7 @@ function exists_img_list($s)
 
     $list = [];
     for ($i = 1; $i < 10; $i++) {
-        if (file_exists("{$s['base_img_dir']}/{$i}.jpg")) {
+        if (file_exists("{$s['base_img_dir']}/{$i}.png")) {
             $list[$i] = true;
         } else {
             $list[$i] = false;
@@ -63,7 +63,7 @@ function json($args)
     $list = [];
     foreach (exists_img_list($s) as $k => $exists) {
         if ($exists) {
-            $list[] = "{$k}.jpg";
+            $list[] = "{$k}.png";
         }
     }
 
@@ -95,13 +95,13 @@ function upload($args)
 
     $image = $imgmanager
         ->make($tmp)
+        ->orientate()
         ->widen(300, function ($constraint) {
             $constraint->upsize();
         })
         ->heighten(400, function ($constraint) {
             $constraint->upsize();
-        })
-        ->orientate();
+        });
 
     $s = generate_something($args);
 
@@ -109,7 +109,7 @@ function upload($args)
         mkdir($s['base_img_dir']);
     }
 
-    $image->save("{$s['base_img_dir']}/{$s['num']}.jpg", 60);
+    $image->save("{$s['base_img_dir']}/{$s['num']}.png", 60);
 
     redirect($s['your_form_url']);
 }
@@ -117,7 +117,7 @@ function upload($args)
 function delete($args)
 {
     $s = generate_something($args);
-    $file_path = "{$s['base_img_dir']}/{$s['num']}.jpg";
+    $file_path = "{$s['base_img_dir']}/{$s['num']}.png";
     if (file_exists($file_path)) {
         unlink($file_path);
     }
