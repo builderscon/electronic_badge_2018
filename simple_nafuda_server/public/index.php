@@ -69,7 +69,7 @@ function json($args)
 
     header('content-type: application/json');
     echo json_encode([
-        "last_update"=>time(), # fix me!!!
+        "last_update" => time(), # fix me!!!
         "list" => $list
     ], JSON_PRETTY_PRINT);
 
@@ -77,6 +77,10 @@ function json($args)
 
 function upload($args)
 {
+    if (!isset($_FILES['image'])) {
+        redirect($s['your_form_url']);
+    }
+
     $tmp = $_FILES['image']['tmp_name'];
     if (!is_uploaded_file($tmp)) {
         throw new \InvalidArgumentException("not upload file");
@@ -95,7 +99,7 @@ function upload($args)
 
     $image = $imgmanager
         ->make($tmp)
-        ->orientate() // なんか…色がおかしくなる…
+        ->orientate()// なんか…色がおかしくなる…
         ->widen(300, function ($constraint) {
             $constraint->upsize();
         })
