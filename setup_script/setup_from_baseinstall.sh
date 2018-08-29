@@ -13,7 +13,8 @@ fi
 sudo apt -y update
 sudo apt -y upgrade
 
-sudo apt -y install git vim python-imaging python3-pil python-spidev python3-spidev fonts-freefont-ttf fonts-vlgothic  python-rpi.gpio python3-rpi.gpio
+sudo apt -y install git vim python-imaging python3-pil python-spidev python3-spidev fonts-freefont-ttf fonts-vlgothic  python-rpi.gpio python3-rpi.gpio python3-pip python-pip
+sudo pip3 install qrcode requests
 
 sudo update-alternatives --set editor /usr/bin/vim.basic
 
