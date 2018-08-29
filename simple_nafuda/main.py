@@ -86,7 +86,7 @@ def main():
 
             # rwで再マウント
             if os.path.isfile("/usr/bin/mount_vsd_rw"):
-                os.system('sudo mout_vsd_rw')
+                os.system('/usr/bin/mount_vsd_rw')
 
             # clean up img dir
             file_list_to_rm = os.listdir(IMG_DIR)
@@ -109,7 +109,7 @@ def main():
 
             # roで再マウント
             if os.path.isfile("/usr/bin/mount_vsd_ro"):
-                os.system('sudo mout_vsd_ro')
+                os.system('/usr/bin/mount_vsd_rw')
 
         except:
             traceback.print_exc()
