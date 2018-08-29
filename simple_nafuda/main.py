@@ -58,7 +58,6 @@ CLOUD_QR_CODE_FILE_PATH = IMG_DIR + "/" + CLOUD_QR_CODE_FILE_NAME
 
 
 def main():
-
     result = load_settings_from_cloud()
 
     if result is not True:
@@ -90,6 +89,9 @@ def main():
                 qr_img = get_control_url_qrcode_img()
                 base_image.paste(qr_img, (10, 10))
                 nafuda.draw_image_buffer(base_image, orientation=90)
+                if "PSEUDO_EPD_MODE" in os.environ:
+                    # guard for img bomb.
+                    time.sleep(3)
                 continue
 
             try:
@@ -106,6 +108,7 @@ def main():
             # 一枚しか画像がなければ、スライドショーする意味がないので終了
             if len(file_list) == 1:
                 exit(0)
+
 
 def load_settings_from_cloud():
     # QRコードに置換する画像がなければ、クラウド機能は不要と判断して実行しない
@@ -142,7 +145,7 @@ def load_settings_from_cloud():
             # clean up img dir
             file_list_to_rm = os.listdir(IMG_DIR)
             for f in file_list_to_rm:
-                p = IMG_DIR+"/"+f
+                p = IMG_DIR + "/" + f
                 if os.path.isfile(p):
                     if re.search('^[^\.].*\.(png|jpg|jpeg|gif)', p, re.IGNORECASE):
                         if f != CLOUD_QR_CODE_FILE_NAME:
@@ -152,7 +155,7 @@ def load_settings_from_cloud():
             id = 1
             for img in img_list:
                 root, ext = os.path.splitext(img)
-                get_and_save_file(get_control_url()+"/"+img, IMG_DIR+"/"+str(id)+ext)
+                get_and_save_file(get_img_url_base() + "/" + img, IMG_DIR + "/" + str(id) + ext)
                 id = id + 1
 
             # save json
@@ -170,7 +173,6 @@ def load_settings_from_cloud():
             # 止まられると困る！
             traceback.print_exc()
             return False
-
 
 
 def get_nafuda_id():
@@ -191,6 +193,10 @@ def get_nafuda_id():
         return False
 
     return hash
+
+
+def get_img_url_base():
+    return BASE_URL + "/eb2018/" + get_nafuda_id() + "/"
 
 
 def get_control_url():
