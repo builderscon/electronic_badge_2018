@@ -63,7 +63,7 @@ function json($args)
     $list = [];
     foreach (exists_img_list($s) as $k => $exists) {
         if ($exists) {
-            $list[] = "{$k}.png";
+            $list[] = "{$k}.jpg";
         }
     }
 
@@ -167,6 +167,7 @@ function e($str, $rtn = false)
         return htmlspecialchars($str, ENT_QUOTES);
     } else {
         echo htmlspecialchars($str, ENT_QUOTES);
+        return;
     }
 }
 
