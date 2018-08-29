@@ -36,8 +36,8 @@ import json
 import traceback
 from PIL import Image
 
-# BASE_URL = "https://eb2018.builderscon.io/"
-BASE_URL = "http://u.cfe.jp/"
+BASE_URL = "https://eb2018.builderscon.io/"
+# BASE_URL = "http://u.cfe.jp/"
 
 sys.path.append(os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../lib'))
 
@@ -114,7 +114,7 @@ def load_settings_from_cloud():
     # QRコードに置換する画像がなければ、クラウド機能は不要と判断して実行しない
     # https://server/{SHA2}/json settings
     # https://server/{SHA2}/ UI
-    # https://server/eb2018/{SHA2}/[0-9].(png|jpg|gif...) imgs
+    # https://server/bc2018/{SHA2}/[0-9].(png|jpg|gif...) imgs
     if os.path.isfile(CLOUD_QR_CODE_FILE_PATH):
         try:
             # 設定JSONをサーバーから取得試行
@@ -199,7 +199,7 @@ def get_nafuda_id():
 
 
 def get_img_url_base():
-    return BASE_URL + "/eb2018/" + get_nafuda_id() + "/"
+    return BASE_URL + "/bc2018/" + get_nafuda_id() + "/"
 
 
 def get_control_url():
