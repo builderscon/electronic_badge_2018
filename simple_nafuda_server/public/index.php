@@ -94,6 +94,7 @@ function upload($args)
 
     $image = $imgmanager
         ->make($tmp)
+        ->orientate()
         ->widen(300, function ($constraint) {
             $constraint->upsize();
         })
