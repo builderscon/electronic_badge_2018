@@ -112,6 +112,9 @@ def main():
 
 def load_settings_from_cloud():
     # QRコードに置換する画像がなければ、クラウド機能は不要と判断して実行しない
+    # https://server/{SHA2}/json settings
+    # https://server/{SHA2}/ UI
+    # https://server/eb2018/{SHA2}/[0-9].(png|jpg|gif...) imgs
     if os.path.isfile(CLOUD_QR_CODE_FILE_PATH):
         try:
             # 設定JSONをサーバーから取得試行
