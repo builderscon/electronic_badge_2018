@@ -11,6 +11,17 @@ fi
 # スタック回避のため
 set +e
 
+## fsck、失敗したら削除
+if [ -e ${VSD_IMG_PATH} ]
+then
+  fsck.vfat -a "${VSD_IMG_PATH}"
+  if [ $? -ne 0 ] || [ $? -ne 1 ]
+  then
+    echo "fsck failed. force rm disk."
+    rm -f "${VSD_IMG_PATH}"
+  fi
+fi
+
 # try mount vsd
 ${VSD_RO}
 
