@@ -20,7 +20,7 @@
 
     <?php if ($exists) { ?>
         <form action="delete/<?php e($num)?>" method="post">
-            <?php e($num)?>. <img src="<?php e($s['base_img_url'])?>/<?php e($num)?>.jpg" class="thumbnail">
+            <?php e($num)?>. <img src="<?php e($s['base_img_url'])?>/<?php e($num)?>.png" class="thumbnail">
             <button type="submit">削除</button>
         </form>
     <?php } else { ?>
