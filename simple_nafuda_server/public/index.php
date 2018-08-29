@@ -95,7 +95,7 @@ function upload($args)
 
     $image = $imgmanager
         ->make($tmp)
-        ->orientate()
+        ->orientate() // なんか…色がおかしくなる…
         ->widen(300, function ($constraint) {
             $constraint->upsize();
         })
