@@ -30,6 +30,7 @@ DO_VSD_REBUILD=0
 # check mount success
 if [ 0 -eq `mount | grep -c ${VSD_BASE_DIR}` ]
 then
+    echo "mount failed."
     DO_VSD_REBUILD=1
 fi
 
@@ -37,6 +38,7 @@ fi
 if [ -e "/boot/vsd_rebuild" ]
 then
     rm  "/boot/vsd_rebuild"
+    echo "boot vsd_rebuild switch found."
     DO_VSD_REBUILD=1
 fi
 
@@ -44,6 +46,15 @@ fi
 if [ -e "${VSD_BASE_DIR}/vsd_rebuild" ]
 then
     # vsd_rebuildは後のrebuildで消えるはずなので削除しない
+    echo "vsd vsd_rebuild switch found."
+    DO_VSD_REBUILD=1
+fi
+
+# force rebuild switch 2
+if [ ! -e "${VSD_BASE_DIR}/img" ]
+then
+    # img ディレクトリがなかったらrebuild(ちょっと大げさかもしれない
+    echo "img dir not found"
     DO_VSD_REBUILD=1
 fi
 
