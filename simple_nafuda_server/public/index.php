@@ -69,6 +69,7 @@ function json($args)
 
     header('content-type: application/json');
     echo json_encode([
+        "last_update"=>time(), # fix me!!!
         "list" => $list
     ], JSON_PRETTY_PRINT);
 
