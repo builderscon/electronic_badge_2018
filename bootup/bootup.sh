@@ -17,7 +17,7 @@ fi
 
 # mount vsd (NAFUDA drive) or rebuild vsd.
 set +e
-CHECK_VSD_RESULT=`${SCRIPT_DIR}/check_vsd.sh | tail -1`
+${SCRIPT_DIR}/check_vsd.sh
 
 # mount failed.
 # VSDがないときは、g_etherにフォールバックして終了する。
