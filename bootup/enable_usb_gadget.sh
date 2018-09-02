@@ -42,7 +42,7 @@ fi
 if [ -z "${G_MODE}" ]
 then
     G_MODE="g_mass_storage"
-    modprobe g_mass_storage file=${VSD_IMG_PATH} stall=0 removable=1
+    modprobe g_mass_storage file=${VSD_IMG_PATH} stall=0 removable=0
 fi
 
 echo "${G_MODE}"
