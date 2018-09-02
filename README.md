@@ -42,6 +42,13 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 
 > ※ imgディレクトリに最初から入っている画像は削除しても`NAFUDA`ドライブを所定の手続きで初期化することで戻せますが、ソフトウェアのアップデートで画像が変わる事があります。
 
+
+## 動画によるデモ
+
+- [電子名札 スライドショー起動](https://www.youtube.com/watch?v=tByA1lBPJD4)
+- [電子名札 USB接続時 NAFUDAドライブ操作](https://www.youtube.com/watch?v=ldZi0VksX1o)
+- [電子名札 ウェブ経由画像アップロードデモ](https://www.youtube.com/watch?v=RRAVv2eyS_Y)
+
 ***
 
 
