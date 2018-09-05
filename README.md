@@ -62,8 +62,8 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 - [電子名札 USB接続時 NAFUDAドライブ操作](https://www.youtube.com/watch?v=ldZi0VksX1o)
 - [電子名札 ウェブ経由画像アップロードデモ](https://www.youtube.com/watch?v=RRAVv2eyS_Y)
 
-***
 
+***
 
 ## ドキュメント
 
