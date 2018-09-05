@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ja">
 <head>
+    <meta name="viewport" content="width=480">
     <meta charset="UTF-8">
     <title>electronic badge - builderscon tokyo 2018</title>
     <style>
@@ -13,6 +14,9 @@
 <body>
 
 <h1>電子名札 画像設定ツール</h1>
+
+<p>こちらの画面で画像をアップロードした後、ネットワークがある状態で電子名札のrebootが必要です。<br>
+再起動後、情報表示が完了した後にダウンロードが行われます。</p>
 
 <h2>一覧</h2>
 
@@ -31,6 +35,18 @@
         </form>
     <?php } ?>
 <?php } ?>
+
+<hr>
+
+<p>
+電子名札の情報やドキュメントなどが記載された、公式のGithubはこちらからどうぞ<br>
+<a href="https://github.com/builderscon/electronic_badge_2018" target="_blank">github/builderscon/electronic_badge_2018</a>
+</p>
+
+<p>
+初期に登録されていた注意書きや、メルカリ様ロゴなどは以下からDLできます<br>
+<a href="https://github.com/builderscon/electronic_badge_2018/tree/master/bootup/virtual_sd_builder/skel/img" target="_blank">IMG</a>
+</p>
 
 </body>
 </html>
