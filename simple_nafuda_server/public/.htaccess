@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+# sudo a2enmod headers
+RequestHeader unset If-Modified-Since
+Header set Cache-Control no-store
