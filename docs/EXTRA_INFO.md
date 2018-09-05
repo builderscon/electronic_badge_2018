@@ -56,9 +56,19 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 > ※ 大きい容量だと、microSDを焼くのがすごい時間がかかるからです！
 
-`/boot/cmdline.txt`の最後に以下を追記し、再起動することでmicroSDのフルサイズである8GBまでパーティーションを拡大できます。
+コマンドで拡張することができますが、以下は自己責任でお願いいたします。
 
-ただし、自己責任でお願いいたします。
+#### 方法１
+
+以下のコマンドを実行するとサイズを広げる事ができます
+
+```bash
+$ raspi-config --expand-rootfs
+```
+
+#### 方法２
+
+あるいは、`/boot/cmdline.txt`の最後に以下を追記し、再起動することでmicroSDのフルサイズである8GBまでパーティーションを拡大できます。
 
 ```
  init=/usr/lib/raspi-config/init_resize.sh
