@@ -23,6 +23,10 @@ reboot後、nafuda slideshow前にDownloadが行われます。</p>
 Max file size は ５MB です。アップロードに失敗する場合は、resizeしてください
 </p>
 
+<p>
+QRコードは他人にスキャンされないようにご注意ください（わざとであれば問題はありません）
+</p>
+
 <h2>一覧</h2>
 
 <?php foreach ($list as $i => $exists) { $num = $i;?>
