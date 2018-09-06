@@ -2,7 +2,7 @@
 #
 # for development.
 # $ export PSEUDO_EPD_MODE=1
-# $ python show.py your_image.png
+# $ python show_txt.py your_image.png
 #
 # if you want to use your font
 # $ export EPD_FONT_PATH="/System/Library/Fonts/ヒラギノ角ゴシック W0.ttc"
@@ -77,8 +77,8 @@ def main():
 def show_help():
     print(textwrap.dedent('''\
     usage: 
-    $ show.py filename.txt
-    $ echo abc | show.py -
+    $ show_txt.py filename.txt
+    $ echo abc | show_txt.py -
     '''))
 
 

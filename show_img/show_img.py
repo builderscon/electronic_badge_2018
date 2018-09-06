@@ -4,11 +4,11 @@
 # just draw to e-paper program.
 #
 # usage:
-# $ python show.py your_image.png
+# $ python show_img.py your_image.png
 #
 # for development.
 # $ export PSEUDO_EPD_MODE=1
-# $ python show.py your_image.png
+# $ python show_img.py your_image.png
 #
 # Copyright (C) Aug 4 2018, Junichi Ishida <uzulla@himitsukichi.com>
 #
