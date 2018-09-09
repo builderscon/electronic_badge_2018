@@ -77,7 +77,7 @@ then
     then
         # broken
         echo "VSD MOUNT FAILED"
-        echo "VSD MOUNT FAILED" show_txt -
+        echo "VSD MOUNT FAILED" | show_txt -
         exit 1
     fi
 
