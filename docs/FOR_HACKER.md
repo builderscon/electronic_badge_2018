@@ -54,7 +54,7 @@ https://github.com/builderscon/electronic_badge_2018
 
 `/mnt/virtual_sd/starup.sh`
 
-> ※ `/mnt/virtual_sd`はrwでマウントされているので、rwでマウントしなおすか、NAFUDAドライブ経由で保存して再起動してください。 
+> ※ `/mnt/virtual_sd`はroでマウントされているので、rwでマウントしなおすか、NAFUDAドライブ経由で保存して再起動してください。 
 
 > ※ `startup.sh`を作成すると、`simple_nafuda`が起動しなくなります
 
