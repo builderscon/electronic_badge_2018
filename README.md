@@ -71,6 +71,7 @@ builderscon tokyo 2018で配布される「電子名札」の向けのソフト�
 - [Raspbery Pi へのログイン方法](docs/HOW_TO_LOGIN.md)
 - [トラブルシュート](docs/TROUBLESHOOT.md)
 - [LICENSE](docs/LICENSE.md)
+- [自分で名札を作る方へ、作りかたや部品について](docs/DIY_NAFUDA.md)
 - [その他ドキュメント](docs/)
 
 
