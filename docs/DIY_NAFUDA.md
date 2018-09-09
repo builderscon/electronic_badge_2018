@@ -7,8 +7,10 @@
 
 - Raspberry pi zero wh
   - 販売店例： https://raspberry-pi.ksyic.com/main/index/pdp.id/406/pdp.open/406
-- Epaper display 4.2 inch 
+- Waveshare 400x300, 4.2inch E-Ink display module 
   - 販売店例： https://www.robotshop.com/jp/ja/400x300-42-e-ink-display-module.html
+  - 販売店例： https://www.waveshare.com/4.2inch-e-paper-module.htm
+  - 販売店例： https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-58US
 - microSD （配布品においては8GB）
 - 板（MDFなどで制作）
   - 配布時のものと意匠が少々異なりますが、`base_board` 内のデータを参照ください。伝導体でない素材であれば、なにでも構わないと思われます
