@@ -42,7 +42,7 @@ fi
 if [ -z "${G_MODE}" ]
 then
     G_MODE="g_mass_storage"
-    modprobe g_mass_storage file=${VSD_IMG_PATH} stall=0 removable=0
+    modprobe g_mass_storage file=${VSD_IMG_PATH} stall=0 removable=1
     sudo sysctl -w vm.dirty_expire_centisecs=50 2>&1 > /dev/null
     sudo sysctl -w vm.dirty_writeback_centisecs=100 2>&1 > /dev/null
 fi
