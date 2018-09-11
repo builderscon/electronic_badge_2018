@@ -80,6 +80,7 @@ def main():
 
     while True:
         for file in file_list:
+            # CLOUD_BASE_URLがなければ、QRコードを表示しない
             if "CLOUD_BASE_URL" in data and data['CLOUD_BASE_URL'] != "":
                 if file == CLOUD_QR_CODE_FILE_NAME :
                     # QRコードを合成して表示
