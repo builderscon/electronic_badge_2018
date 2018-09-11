@@ -35,6 +35,8 @@ import requests
 import json
 import traceback
 from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
 
 BASE_URL = "https://eb2018.builderscon.io/"
 # BASE_URL = "http://u.cfe.jp/"
@@ -183,7 +185,7 @@ def get_nafuda_id():
     p_path = '/mnt/virtual_sd/default_passwd.txt'
 
     if not os.path.isfile(h_path) or not os.path.isfile(p_path):
-        return False
+        raise CouldNotGenerateNafudaIdError
 
     try:
         hostname = open(h_path).read(128).encode('UTF-8')
@@ -214,10 +216,35 @@ def get_control_url_qrcode_img():
         border=4,
     )
 
-    qr.add_data(get_control_url())
-    qr.make(fit=True)
-    # print(qr.size)
-    return qr.make_image(fill_color="black", back_color="white")
+    try:
+        qr.add_data(get_control_url())
+        qr.make(fit=True)
+        # print(qr.size)
+        return qr.make_image(fill_color="black", back_color="white")
+
+    except CouldNotGenerateNafudaIdError:
+        # qrコード生成に失敗。エラーメッセージの画像を作って返す
+        return generate_sorry_image("QRコードの生成に失敗:\n初期化してください")
+
+
+def generate_sorry_image(error_msg):
+    if "EPD_FONT_PATH" in os.environ:
+        font_path = os.environ['EPD_FONT_PATH']
+    else:
+        font_path = '/usr/share/fonts/truetype/vlgothic/VL-Gothic-Regular.ttf'
+
+    font_pt = 16
+    font = ImageFont.truetype(font_path, font_pt)
+    image = Image.new('1', (200, 200), 1)  # 1: clear the frame
+    draw = ImageDraw.Draw(image)
+
+    draw.text(
+        (0, 0),
+        error_msg,
+        font=font,
+        fill=0)
+
+    return image
 
 
 def get_and_save_file(url, file_path):
@@ -227,6 +254,10 @@ def get_and_save_file(url, file_path):
             if chunk:
                 f.write(chunk)
                 f.flush()
+
+
+class CouldNotGenerateNafudaIdError(Exception):
+    """ファイル不足などで名札IDが生成できなかった場合のエラー"""
 
 
 if __name__ == '__main__':
