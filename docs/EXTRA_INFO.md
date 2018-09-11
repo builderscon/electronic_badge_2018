@@ -74,3 +74,26 @@ $ raspi-config --expand-rootfs
  init=/usr/lib/raspi-config/init_resize.sh
 ```
 
+## 初期状態でBLEなどBluetoothが動作しない件について
+
+起動時間の短縮と、ハードウェアシリアルを有効化する為にBTのserviceを一部無効にしています。
+
+そのため、`hcitool lescan`などを実行した際に以下のエラーが発生する事があります。
+
+```
+Could not open device: No such device
+```
+
+BLEを利用するには、ログインして`/boot/config.txt`ファイルの以下の該当行を消すかコメントアウトし、
+
+```
+enable_uart=1
+dtoverlay=pi3-miniuart-bt
+```
+
+以下を実行して、一部サービスを有効化してください。
+
+```
+$ sudo systemctl enable hciuart.service
+```
+ 
