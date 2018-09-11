@@ -55,7 +55,6 @@ CLOUD_JSON_CACHE_PATH = IMG_DIR + "/cloud.json"
 CLOUD_QR_CODE_FILE_NAME = "__CONVERT_TO_QR__.png"
 CLOUD_QR_CODE_FILE_PATH = IMG_DIR + "/" + CLOUD_QR_CODE_FILE_NAME
 
-
 def main():
     load_settings_from_cloud()
 
@@ -80,9 +79,11 @@ def main():
 
     while True:
         for file in file_list:
-            # CLOUD_BASE_URLがなければ、QRコードを表示しない
-            if "CLOUD_BASE_URL" in data and data['CLOUD_BASE_URL'] != "":
-                if file == CLOUD_QR_CODE_FILE_NAME :
+
+            # QRコード置換用画像が来た
+            if file == CLOUD_QR_CODE_FILE_NAME:
+                # CLOUD_BASE_URLがなければ、QRコードを表示しない
+                if "CLOUD_BASE_URL" in data and data['CLOUD_BASE_URL'] != "":
                     # QRコードを合成して表示
                     base_image = Image.open(CLOUD_QR_CODE_FILE_PATH)
                     qr_img = get_control_url_qrcode_img()
@@ -91,7 +92,8 @@ def main():
                     if "PSEUDO_EPD_MODE" in os.environ:
                         # guard for img bomb.
                         time.sleep(3)
-                    continue
+
+                continue
 
             try:
                 nafuda.draw_image_file(IMG_DIR + '/' + file, 90)
