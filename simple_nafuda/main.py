@@ -38,9 +38,6 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 
-BASE_URL = "https://eb2018.builderscon.io/"
-# BASE_URL = "http://u.cfe.jp/"
-
 sys.path.append(os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../lib'))
 
 from nafuda import Nafuda
@@ -60,11 +57,7 @@ CLOUD_QR_CODE_FILE_PATH = IMG_DIR + "/" + CLOUD_QR_CODE_FILE_NAME
 
 
 def main():
-    result = load_settings_from_cloud()
-
-    if result is not True:
-        # 場合によってはエラーかもしれないけど、とまると困るので続行させる
-        print(result)
+    load_settings_from_cloud()
 
     # load image file list
     file_list = []
@@ -112,72 +105,94 @@ def main():
                 exit(0)
 
 
+def local_settings():
+    setting_json = "settings.json"
+
+    if not os.path.exists(setting_json):
+        raise LoadLocalSettingsError
+
+    with open(setting_json, "r") as sj:
+        data = json.loads(sj.read())
+
+    return data
+
+
 def load_settings_from_cloud():
+    data = local_settings()
+
+    # 設定がなければ、実行しない
+    if "CLOUD_BASE_URL" not in data or data['CLOUD_BASE_URL'] == "":
+        print("no CLOUD_BASE_URL")
+        return False
+
     # QRコードに置換する画像がなければ、クラウド機能は不要と判断して実行しない
+    if not os.path.isfile(CLOUD_QR_CODE_FILE_PATH):
+        return False
+
     # https://server/{SHA2}/json settings
     # https://server/{SHA2}/ UI
     # https://server/bc2018/{SHA2}/[0-9].(png|jpg|gif...) imgs
-    if os.path.isfile(CLOUD_QR_CODE_FILE_PATH):
-        try:
-            # 設定JSONをサーバーから取得試行
-            r = requests.get(get_control_url() + "json")
-            if r.status_code != 200:
-                return "json not found"
+    print("try get data from cloud")
+    try:
+        # 設定JSONをサーバーから取得試行
+        r = requests.get(get_control_url() + "json")
+        if r.status_code != 200:
+            return "json not found"
 
-            json_str = r.text
+        json_str = r.text
 
-            data = json.loads(json_str)
-            img_list = data['list']
-            if not isinstance(img_list, list):
-                return "maybe invalid json"
+        data = json.loads(json_str)
+        img_list = data['list']
+        if not isinstance(img_list, list):
+            return "maybe invalid json"
 
-            if len(img_list) == 0:
-                # 空の場合はなにもしない
-                return "empty list"
+        if len(img_list) == 0:
+            # 空の場合はなにもしない
+            return "empty list"
 
-            # 過去のJSONがあれば、更新があるか確認
-            if os.path.isfile(CLOUD_JSON_CACHE_PATH):
-                with open(CLOUD_JSON_CACHE_PATH, "r") as jc:
-                    cached_json = jc.read()
-                    if cached_json == json_str:
-                        return "json not updated"
+        # 過去のJSONがあれば、更新があるか確認
+        if os.path.isfile(CLOUD_JSON_CACHE_PATH):
+            with open(CLOUD_JSON_CACHE_PATH, "r") as jc:
+                cached_json = jc.read()
+                if cached_json == json_str:
+                    return "json not updated"
 
-            # rwで再マウント
-            if os.path.isfile("/usr/bin/mount_vsd_rw"):
-                if os.system('/usr/bin/mount_vsd_rw') != 0:
-                    return "mount_vsd_rw fail."
+        # rwで再マウント
+        if os.path.isfile("/usr/bin/mount_vsd_rw"):
+            if os.system('/usr/bin/mount_vsd_rw') != 0:
+                return "mount_vsd_rw fail."
 
-            # clean up img dir
-            file_list_to_rm = os.listdir(IMG_DIR)
-            for f in file_list_to_rm:
-                p = IMG_DIR + "/" + f
-                if os.path.isfile(p):
-                    if re.search('^[^\.].*\.(png|jpg|jpeg|gif)', p, re.IGNORECASE):
-                        if f != CLOUD_QR_CODE_FILE_NAME:
-                            os.remove(p)
+        # clean up img dir
+        file_list_to_rm = os.listdir(IMG_DIR)
+        for f in file_list_to_rm:
+            p = IMG_DIR + "/" + f
+            if os.path.isfile(p):
+                if re.search('^[^\.].*\.(png|jpg|jpeg|gif)', p, re.IGNORECASE):
+                    if f != CLOUD_QR_CODE_FILE_NAME:
+                        os.remove(p)
 
-            # 画像をDLして保存
-            id = 1
-            for img in img_list:
-                root, ext = os.path.splitext(img)
-                get_and_save_file(get_img_url_base() + "/" + img, IMG_DIR + "/" + str(id) + ext)
-                id = id + 1
+        # 画像をDLして保存
+        id = 1
+        for img in img_list:
+            root, ext = os.path.splitext(img)
+            get_and_save_file(get_img_url_base() + "/" + img, IMG_DIR + "/" + str(id) + ext)
+            id = id + 1
 
-            # save json
-            with open(CLOUD_JSON_CACHE_PATH, "w") as jc:
-                jc.write(json_str)
+        # save json
+        with open(CLOUD_JSON_CACHE_PATH, "w") as jc:
+            jc.write(json_str)
 
-            # roで再マウント
-            if os.path.isfile("/usr/bin/mount_vsd_ro"):
-                if os.system('/usr/bin/mount_vsd_ro') != 0:
-                    return "mount_vsd_ro fail."
+        # roで再マウント
+        if os.path.isfile("/usr/bin/mount_vsd_ro"):
+            if os.system('/usr/bin/mount_vsd_ro') != 0:
+                return "mount_vsd_ro fail."
 
-            return True
+        return True
 
-        except:
-            # 止まられると困る！
-            traceback.print_exc()
-            return False
+    except:
+        # 止まられると困る！
+        traceback.print_exc()
+        return False
 
 
 def get_nafuda_id():
@@ -201,11 +216,13 @@ def get_nafuda_id():
 
 
 def get_img_url_base():
-    return BASE_URL + "/bc2018/" + get_nafuda_id() + "/"
+    data = local_settings()
+    return data['CLOUD_BASE_URL'] + "/bc2018/" + get_nafuda_id() + "/"
 
 
 def get_control_url():
-    return BASE_URL + get_nafuda_id() + "/"
+    data = local_settings()
+    return data['CLOUD_BASE_URL'] + get_nafuda_id() + "/"
 
 
 def get_control_url_qrcode_img():
@@ -258,6 +275,10 @@ def get_and_save_file(url, file_path):
 
 class CouldNotGenerateNafudaIdError(Exception):
     """ファイル不足などで名札IDが生成できなかった場合のエラー"""
+
+
+class LoadLocalSettingsError(Exception):
+    """settings.jsonをロードできなかった場合のエラー"""
 
 
 if __name__ == '__main__':
