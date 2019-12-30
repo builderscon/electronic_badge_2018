@@ -7,7 +7,7 @@ Show today's weather(in japanese).
 ## usage
 
 ```
-$ python3.5 main.py
+$ python3 main.py
 ```
 
 ## info

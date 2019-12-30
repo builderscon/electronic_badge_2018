@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3
 #
 # e-paper nafuda sample code.
 # just draw to e-paper program.

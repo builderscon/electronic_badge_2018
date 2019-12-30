@@ -53,7 +53,7 @@ show_img /tmp/bcon.png
 ## 各インタプリタへのパス
 
 ```
-/usr/bin/python3.5
+/usr/bin/python3
 ※ /usr/bin/python は python2なので推奨はしません
 /usr/bin/perl
 ```

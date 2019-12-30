@@ -7,7 +7,7 @@ Slide show with images in `img`.
 ## usage
 
 ```
-$ python3.5 main.py
+$ python3 main.py
 ```
 
 ## info

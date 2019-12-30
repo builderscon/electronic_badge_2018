@@ -13,7 +13,7 @@ fi
 sudo apt -y update
 sudo apt -y upgrade
 
-sudo apt -y install git vim python-imaging python3-pil python-spidev python3-spidev fonts-freefont-ttf fonts-vlgothic  python-rpi.gpio python3-rpi.gpio python3-pip python-pip
+sudo apt -y install git vim python-pil python3-pil python-spidev python3-spidev fonts-freefont-ttf fonts-vlgothic  python-rpi.gpio python3-rpi.gpio python3-pip python-pip
 sudo pip3 install qrcode requests
 
 sudo update-alternatives --set editor /usr/bin/vim.basic
@@ -25,7 +25,7 @@ set -e
 export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 git -C /home/pi clone https://github.com/builderscon/electronic_badge_2018.git
 
-/home/pi/electronic_badge_2018/show_img/show_img.py /home/pi/electronic_badge_2018/bootup/virtual_sd_builder/skel/img/info.png
+/home/pi/electronic_badge_2018/show_img/show_img.py /home/pi/electronic_badge_2018/bootup/virtual_sd_builder/skel/img/0_info.png
 
 sudo cp /home/pi/electronic_badge_2018/bootup/nafuda-bootup.service /etc/systemd/system/
 sudo cp /home/pi/electronic_badge_2018/simple_nafuda/simple-nafuda.service /etc/systemd/system/

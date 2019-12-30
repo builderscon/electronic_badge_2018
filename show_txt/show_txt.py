@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3
 #
 # for development.
 # $ export PSEUDO_EPD_MODE=1
