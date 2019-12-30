@@ -3,15 +3,15 @@
 ## 電子名札のmicroSDにプリインストールされたOSなどソフトウェア群
 
 > ※ これらは配布された名札のmicroSD、およびReleasesのイメージに関わります。
+> ※ 当時配布されたものと、最新版は異なる場合があります。
 
 電子名札のmicroSDにインストールされた環境は、以下のバージョンのraspbianの上に構築されています。
 
 ```
-RASPBIAN STRETCH LITE
-Minimal image based on Debian Stretch
-Version:June 2018
-Release date:2018-06-27
-Kernel version:4.14
+Raspbian Buster Lite
+Minimal image based on Debian Buster
+Version:September 2019
+Release date:2019-09-26
 ```
 
 それらのソフトウェアは以下をたどり、ダウンロード、ソースコードの取得が可能です。
