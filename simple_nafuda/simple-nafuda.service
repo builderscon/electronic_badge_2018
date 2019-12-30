@@ -3,7 +3,7 @@ Description=simple nafuda
 
 [Service]
 WorkingDirectory=/home/pi/electronic_badge_2018/simple_nafuda/
-ExecStart=/usr/bin/python3.5 main.py
+ExecStart=/usr/bin/python3 main.py
 ExecStopPost=/home/pi/electronic_badge_2018/simple_nafuda/exec_stop_post.sh
 Restart=no
 Type=simple
